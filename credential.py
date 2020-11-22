@@ -24,6 +24,17 @@ class Credential:
         '''
         Will delete credential
         '''
-        Credential.credential_list.remove(self)     
+        Credential.credential_list.remove(self)  
+
+    @classmethod
+    def display_credentials(cls, username):
+        """
+        this method will take a user_name and
+        return credentials that matches that user_name
+        """
+
+        for credential in cls.credential_list:
+            if credential.username == username:
+                return credential       
 
    
