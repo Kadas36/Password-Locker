@@ -6,12 +6,13 @@ class Credential:
     '''
     credential_list = []
 
-    def __init__(self, acc_name, acc_password):
+    def __init__(self, username, acc_name, acc_password):
         '''
         Passed in three arguments of the isntances of our variables
         '''
         self.acc_name = acc_name
         self.acc_password = acc_password
+        self.username = username
 
     def save_credential(self):
         '''

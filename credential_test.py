@@ -13,7 +13,7 @@ class TestUser(unittest.TestCase):
         '''
         set up method to run before each test cases.
         '''
-        self.new_credential = Credential( "Twitter", "mypassword")
+        self.new_credential = Credential("Tom","Twitter", "mypassword")
 
     def tearDown(self):
         '''
@@ -42,7 +42,7 @@ class TestUser(unittest.TestCase):
         test_delete_credential to remove credentials from our list
         '''
         self.new_credential.save_credential()
-        test_credential = Credential("Twitter","mypassword")
+        test_credential = Credential("Tom","Twitter","mypassword")
         test_credential.save_credential()
 
         self.new_credential.delete_credential()
