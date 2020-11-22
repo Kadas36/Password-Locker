@@ -15,8 +15,14 @@ class Credential:
 
     def save_credential(self):
         '''
-        saving credential object into object list
+        saving credential into list
         '''
-        Credential.credential_list.append(self)    
+        Credential.credential_list.append(self)   
+
+    def delete_credential(self):
+        '''
+        Will delete credential
+        '''
+        Credential.credential_list.remove(self)     
 
    
