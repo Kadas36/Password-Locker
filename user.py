@@ -16,14 +16,14 @@ class User:
         """
         User.user_list.append(self)
 
-    # @classmethod
-    # def find_by_username(cls, username):
-    #     """
-    #     method to check is a user exists
-    #     """
-    #     for user in cls.user_list:
-    #         if user.username == username:
-    #             return user
+    @classmethod
+    def find_by_username(cls, username):
+        """
+        method to check is a user exists
+        """
+        for user in cls.user_list:
+            if user.username == username:
+                return user
 
     # @classmethod
     # def user_exists(cls,username):
