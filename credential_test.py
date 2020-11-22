@@ -28,6 +28,13 @@ class TestUser(unittest.TestCase):
 
         self.assertEqual(self.new_credential.acc_name,"Twitter")
         self.assertEqual(self.new_credential.acc_password,"mypassword")
+
+    def test_save_user(self):
+        '''
+        test_save_credential method to save credential
+        '''
+        self.new_credential.save_credential()
+        self.assertEqual(len(Credential.credential_list),1)    
   
 
 if __name__ == '__main__':
