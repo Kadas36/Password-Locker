@@ -34,7 +34,20 @@ class TestUser(unittest.TestCase):
         test_save_credential method to save credential
         '''
         self.new_credential.save_credential()
-        self.assertEqual(len(Credential.credential_list),1)    
+        self.assertEqual(len(Credential.credential_list),1) 
+
+    def test_delete_credential(self):
+
+        '''
+        test_delete_credential to remove credentials from our list
+        '''
+        self.new_credential.save_credential()
+        test_credential = Credential("Twitter","mypassword")
+        test_credential.save_credential()
+
+        self.new_credential.delete_credential()
+        self.assertEqual(len(Credential.credential_list),1)  
+       
   
 
 if __name__ == '__main__':
