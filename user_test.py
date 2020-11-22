@@ -14,11 +14,11 @@ class TestUser(unittest.TestCase):
         '''
         self.new_user = User( "JohnDoe", "DoeJohn36", "johndoe@gmail.com")
 
-    # def tearDown(self):
-    #     '''
-    #     tearDown method that does clean up after each test has run.
-    #     '''
-    #     User.user_list = []
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test has run.
+        '''
+        User.user_list = []
 
     # def test_init(self):
     #     '''
