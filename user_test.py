@@ -20,14 +20,14 @@ class TestUser(unittest.TestCase):
         '''
         User.user_list = []
 
-    # def test_init(self):
-    #     '''
-    #     test_init test case to test if the object is initialized properly
-    #     '''
+    def test_init(self):
+        '''
+        test_init test case to test if the object is initialized properly
+        '''
 
-    #     self.assertEqual(self.new_user.username,"JohnDoe")
-    #     self.assertEqual(self.new_user.email,"johndoe@gmail.com")
-    #     self.assertEqual(self.new_user.password,"DoeJohn36")
+        self.assertEqual(self.new_user.username,"JohnDoe")
+        self.assertEqual(self.new_user.email,"johndoe@gmail.com")
+        self.assertEqual(self.new_user.password,"DoeJohn36")
 
     # def test_save_user(self):
     #     '''
