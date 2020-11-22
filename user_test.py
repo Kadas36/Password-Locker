@@ -49,18 +49,18 @@ class TestUser(unittest.TestCase):
 
         self.assertEqual(found_user.email,test_user.email)
 
-    # def test_contact_exists(self):
-    #     '''
-    #     test to check if we can return a Boolean  if we cannot find the contact.
-    #     '''
+    def test_contact_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the contact.
+        '''
 
-    #     self.new_user.save_user()
-    #     decoy_user = User("kadas", "kadas@hotmail.com", "kadas36") 
-    #     decoy_user.save_user()
+        self.new_user.save_user()
+        decoy_user = User("kadas", "kadas@hotmail.com", "kadas36") 
+        decoy_user.save_user()
 
-    #     user_exists = User.user_exists("kadas")
+        user_exists = User.user_exists("kadas")
 
-    #     self.assertTrue(user_exists)    
+        self.assertTrue(user_exists)    
 
 if __name__ == '__main__':
     unittest.main()
