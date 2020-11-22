@@ -10,11 +10,11 @@ class User:
         self.password = password
         self.email = email
 
-    # def save_user(self):
-    #     """
-    #     save_user method saves the users object into our user_list
-    #     """
-    #     User.user_list.append(self)
+    def save_user(self):
+        """
+        save_user method saves the users object into our user_list
+        """
+        User.user_list.append(self)
 
     # @classmethod
     # def find_by_username(cls, username):
