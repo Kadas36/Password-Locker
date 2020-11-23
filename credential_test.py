@@ -44,7 +44,7 @@ class TestUser(unittest.TestCase):
         test_delete_credential to remove credentials from our list
         '''
         self.new_credential.save_credential()
-        test_credential = Credential("Twitter","mypassword")
+        test_credential = Credential("Instagram","insta36")
         test_credential.save_credential()
 
         self.new_credential.delete_credential()
@@ -56,12 +56,25 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_credential.save_credential()
-        test_credential = Credential("Instagram","inta36") 
+        test_credential = Credential("Instagram","insta36") 
         test_credential.save_credential()
 
         found_credential = Credential.find_by_acc_name("Instagram")
 
-        self.assertEqual(found_credential.acc_password,test_credential.acc_password)     
+        self.assertEqual(found_credential.acc_password,test_credential.acc_password)   
+
+    def test_credential_exists(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the credential.
+        '''
+
+        self.new_credential.save_credential()
+        test_credential = Credential("Instagram","insta36")
+        test_credential.save_credential()
+
+        credential_exists = Credential.credential_exists("Instagram")
+
+        self.assertTrue(credential_exists)       
 
     def test_copy_acc_password(self):
         '''

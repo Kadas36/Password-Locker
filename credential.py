@@ -24,7 +24,7 @@ class Credential:
         '''
         Will delete credential
         '''
-        Credential.credential_list.remove(self)  
+        Credential.credential_list.remove(self) 
 
     @classmethod
     def display_credentials(cls, username):
@@ -50,6 +50,19 @@ class Credential:
     @classmethod
     def copy_acc_password(cls,acc_name):
         credential_found = Credential.find_by_acc_name(acc_name)
-        pyperclip.copy(credential_found.acc_password)                 
+        pyperclip.copy(credential_found.acc_password)   
+
+    @classmethod
+    def credential_exists(cls,acc_name):
+        '''
+        Method that checks if a credential exists
+        Returns :
+            Boolean: True or false depending if the contact exists
+        '''
+        for credential in cls.credential_list:
+            if credential.acc_name == acc_name:
+                    return True
+
+        return False                   
 
    

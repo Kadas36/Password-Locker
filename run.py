@@ -46,7 +46,7 @@ def password_generator():
 
     return password  
 
-def display_credential():
+def display_credentials():
     """
     Function to use credentials
     """
@@ -58,14 +58,28 @@ def delete_credential(credential):
     """
     Credential.delete_credential()   
 
+def check_existing_credentials(acc_name):
+        '''
+        Function that check if a credential exists with that acc_name and return a Boolean
+        '''
+        return Credential.credential_exists(acc_name)     
+
+def find_credential(acc_name):
+    '''
+    Function that finds credential by acc_name and returns the credential
+    '''
+    return Credential.find_by_acc_name(acc_name)
+
 def main():
     print("Hello! Welcome to Password Locker. What is your name?")
     name = input()
     
-    print(f"Hi {name.title()}, Type n to create a new password locker account")
+    print(f"Hi {name.title()},")
+    print("Use n - create a new password-locker account")
 
     while True:
         short_code = input().lower()
+
         if short_code == "n":
             print('__'*30)
             
@@ -88,52 +102,74 @@ def main():
             else:
                 print("Please type m for your own password or g for a generated password")
                 break
-        save_user(create_user(username,password))
-        break
 
-    print(f"User-{username}, password-{password}")
-    print("You have successfully created your password-locker account")
-    print("__" * 16)
+            save_user(create_user(username,password))
+            break
 
-    print("You can now add and view saved password locker accounts and passwords")
+            print(f"User-{username}, password-{password}")
+            print("You have successfully created your password-locker account")
+            print("__" * 16)
+
+            print("You can now add and view saved password locker accounts and passwords")
+
     while True:
+
             print("""Use:
-                  np - create password credential
-                  dp - display password locker credentials
+                  nc - create credential
+                  dc - display credentials
+                  fc - find credential
                   """)
             short_codes = input().lower()
-            if short_codes == "np":
+            if short_codes == "nc":
                 print("""Type in one of the short_codes,
-                write - make a password so that we can store it for you,
-                generate - we will randomize a password for you
+                w - make a password so that we can store it for you,
+                g - we will randomize a password for you
                 """)
                 acc_reply = input().lower()
 
-                if acc_reply == "write":
+                if acc_reply == "w":
                     print("Enter a name of the account you wish to create")
                     acc_name = input()
                     print("Enter a password for the account")
-                    security_code = input()
+                    passW = input()
 
-                elif acc_reply == "generate":
+                elif acc_reply == "g":
                     print("Enter a name of the account you wish to create")
                     acc_name = input()
-                    security_code = password_generator()
-                    print(f"We have stored your credentials as account name - {acc_name} and password - {security_code}")
+                    passW = password_generator()
+                    print(f"We have stored your credentials as account name - {acc_name} and password - {passW}")
 
                 else:
                     print("Use one of the short codes")
                 save_credential(create_credential(acc_name, password))
                 break
+
                 print("Account credentials stored")
                 print("__" * 30)
 
-            elif short_codes == "dp":
+            elif short_code == "dc":
+
+                if display_credentials():
+                    print("Here is a list of all your credentials")
+                    print('\n')
+
+                    for credential in display_credentials():
+                        print(
+                        f"{credential.acc_name} .....{credential.acc_password}")
+
+                        print('\n')
+                else:
+                    print('\n')
+                    print("You dont seem to have any contacts saved yet")
+                    print('\n')    
+
+            elif short_codes == "fc":
                 print("Enter an account name to search for credentials")
-                src = input().lower()
-                if src == acc_name:
-                    for credential in display_credential():
-                        print(f"{acc_name}, {security_code}")
+                src = input().title()
+                if check_existing_credentials(src):
+                    search_credential = find_credential(src)
+                    print(f"{search_credential.acc_name} {search_credential.acc_password}")
+                    print('-' * 20)
                 else:
                     print("The account does not exist")
                 break
