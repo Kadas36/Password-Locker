@@ -40,8 +40,9 @@ def password_generator():
     A function that generates a random password
     """
     S = string.ascii_uppercase + string.ascii_lowercase + string.digits
-    pass_Length = random.randint(6,8)
-    password = "".join(random.choice(S) for character in range(pass_Length))
+    print("input preferred password length")
+    pass_Length = int(input())
+    password = "".join(random.choices(S, k=pass_Length))
 
     return password  
 
@@ -66,7 +67,7 @@ def main():
     while True:
         short_code = input().lower()
         if short_code == "n":
-            print('__'*16)
+            print('__'*30)
             
             print("Enter your preferred username")
             username = input()
@@ -138,6 +139,8 @@ def main():
                 break
             else:
                 print("wrong input, kindly check on your input")
+            break
+    print("__" * 25)
 
 
 if __name__ == '__main__':

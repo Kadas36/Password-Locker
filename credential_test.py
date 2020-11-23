@@ -48,15 +48,6 @@ class TestUser(unittest.TestCase):
 
         self.new_credential.delete_credential()
         self.assertEqual(len(Credential.credential_list),1)  
-
-    # def test_display_credentials(self):
-    #     '''
-    #     method that returns a list of all user's credentials
-    #     '''
-
-    #     self.assertEqual(Credential.display_credentials("kadas"),Credential.credential_list)    
        
-  
-
 if __name__ == '__main__':
     unittest.main()
