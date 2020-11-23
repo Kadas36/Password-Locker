@@ -12,7 +12,7 @@ class TestUser(unittest.TestCase):
         '''
         set up method to run before each test cases.
         '''
-        self.new_user = User( "JohnDoe", "DoeJohn36", "johndoe@gmail.com")
+        self.new_user = User( "JohnDoe", "DoeJohn36")
 
     def tearDown(self):
         '''
@@ -26,7 +26,6 @@ class TestUser(unittest.TestCase):
         '''
 
         self.assertEqual(self.new_user.username,"JohnDoe")
-        self.assertEqual(self.new_user.email,"johndoe@gmail.com")
         self.assertEqual(self.new_user.password,"DoeJohn36")
 
     def test_save_user(self):
@@ -42,12 +41,12 @@ class TestUser(unittest.TestCase):
         test to check if we can find a user by their user name.
         '''
         self.new_user.save_user()
-        test_user = User("JohnDoe", "JohnDoe36", "johndoe@gmail.com")
+        test_user = User("JohnDoe", "JohnDoe36")
         test_user.save_user()
 
         found_user = User.find_by_username("JohnDoe")
 
-        self.assertEqual(found_user.email,test_user.email)
+        self.assertEqual(found_user.password,test_user.password)
 
     def test_contact_exists(self):
         '''
@@ -55,7 +54,7 @@ class TestUser(unittest.TestCase):
         '''
 
         self.new_user.save_user()
-        decoy_user = User("kadas", "kadas@hotmail.com", "kadas36") 
+        decoy_user = User("kadas", "kadas36") 
         decoy_user.save_user()
 
         user_exists = User.user_exists("kadas")
