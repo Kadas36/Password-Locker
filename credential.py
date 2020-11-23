@@ -1,4 +1,5 @@
 import random
+import pyperclip
 
 class Credential:
     '''
@@ -34,6 +35,21 @@ class Credential:
 
         for credential in cls.credential_list:
             if credential.username == username:
-                return credential       
+                return credential 
+
+    @classmethod
+    def find_by_acc_name(cls,acc_name):
+        '''
+        Method that takes in acc_name and returns credentials associated credentials
+        '''
+
+        for credential in cls.credential_list:
+            if credential.acc_name == acc_name:
+                return credential              
+
+    @classmethod
+    def copy_acc_password(cls,acc_name):
+        credential_found = Credential.find_by_acc_name(acc_name)
+        pyperclip.copy(credential_found.acc_password)                 
 
    

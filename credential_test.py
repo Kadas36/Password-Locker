@@ -1,6 +1,7 @@
 import unittest
 import user
 from credential import Credential
+import pyperclip
 
 
 class TestUser(unittest.TestCase):
@@ -47,7 +48,30 @@ class TestUser(unittest.TestCase):
         test_credential.save_credential()
 
         self.new_credential.delete_credential()
-        self.assertEqual(len(Credential.credential_list),1)  
+        self.assertEqual(len(Credential.credential_list),1) 
+
+    def test_find_contact_by_acc_name(self):
+        '''
+        test to check if we can find account credentials
+        '''
+
+        self.new_credential.save_credential()
+        test_credential = Credential("Instagram","inta36") 
+        test_credential.save_credential()
+
+        found_credential = Credential.find_by_acc_name("Instagram")
+
+        self.assertEqual(found_credential.acc_password,test_credential.acc_password)     
+
+    def test_copy_acc_password(self):
+        '''
+        Test to confirm that we are copying the password in an account
+        '''
+
+        self.new_credential.save_credential()
+        Credential.copy_acc_password("Twitter")
+
+        self.assertEqual(self.new_credential.acc_password,pyperclip.paste())     
        
 if __name__ == '__main__':
     unittest.main()

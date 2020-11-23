@@ -60,9 +60,9 @@ def delete_credential(credential):
 
 def main():
     print("Hello! Welcome to Password Locker. What is your name?")
-    name = input().title()
-
-    print(f"Hi {name}, Type n to create a new password locker account")
+    name = input()
+    
+    print(f"Hi {name.title()}, Type n to create a new password locker account")
 
     while True:
         short_code = input().lower()
